@@ -1,0 +1,58 @@
+.rhap_container {
+  background-color: #581C87!important;
+}
+
+.rhap_progress-bar  {
+  background-color: #fff;
+}
+
+.rhap_repeat-button  {
+ color: #fff!important;
+}
+
+.rhap_time {
+ color: #fff!important;
+}
+
+.rhap_main-controls-button {
+ color: #fff!important;
+}
+.rhap_volume-button {
+ color: #fff
+}
+
+.rhap_volume-bar {
+ background-color: #fff;
+}
+
+.rhap_volume-indicator {
+ background-color: #4ADE80;
+}
+
+.rhap_progress-indicator {
+ background-color: #4ADE80;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  width: 12px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  height: 12px;
+  cursor: pointer;
+  background: #ffffff;
+}
+
+input[type="range"]::-ms-fill-lower {
+  background-color: #b9b9b9!important;
+}
+input[type="range"]::-ms-fill-upper {  
+  background-color: rgb(168 85 247 )!important;
+
+}
+
+input[type="range"]::-moz-range-progress {
+  background-color: #43e5f7!important;
+}
+input[type="range"]::-moz-range-track {  
+  background-color: #9a905d!important;
+}

@@ -65,7 +65,6 @@ const playlistSlice = createSlice({
       .addCase(addToPlaylist.fulfilled, (state, action) => {
         state.loading = false;
         state.tracks = action.payload; 
-        console.log("Added to playlist:", state.tracks);
       })
       .addCase(addToPlaylist.rejected, (state, action) => {
         state.loading = false;
@@ -78,7 +77,6 @@ const playlistSlice = createSlice({
       .addCase(removeFromPlaylist.fulfilled, (state, action) => {
         state.loading = false;
         state.tracks = action.payload; 
-        console.log("Removed from playlist:", state.tracks);
       })
       .addCase(removeFromPlaylist.rejected, (state, action) => {
         state.loading = false;

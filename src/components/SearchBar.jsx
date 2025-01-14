@@ -28,8 +28,6 @@ const SearchBar = () => {
 
    try {
     const response = await axios.request(options);
-    console.log(response.data.items);
-
     dispatch(setSearchResults(response.data.items));
     navigate('/music/search?' + searchQuery);
    } catch (error) {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Menu, X, LogIn } from 'lucide-react';
 import SearchBar from './SearchBar';
 import { logout } from '../API/authApi';
@@ -39,9 +39,9 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/">
+            <NavLink to="/">
               <img src={museLogo} alt="muse-brand" className="w-[120px]" />
-            </Link>
+            </NavLink>
           </div>
 
           {/* Desktop Navigation */}
@@ -50,14 +50,16 @@ const Header = () => {
               <SearchBar />
             </div>
             {['', 'Music', 'My Playlist'].map((item) => (
-              <Link
+              <NavLink
                 key={item}
                 to={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                className="relative text-white group"
+                className={({ isActive }) =>
+                  `relative text-white group ${isActive ? 'active' : ''}`
+                }
               >
                 <span className="relative z-10">{item !== '' ? item : 'Home'}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 group-hover:w-full transition-all duration-300 ease-in-out"></span>
-              </Link>
+              </NavLink>
             ))}
             {/* Profile Dropdown or Sign Up Button */}
             {user ? (
@@ -81,13 +83,15 @@ const Header = () => {
                     {/* Dropdown Items */}
                     <ul>
                       <li>
-                        <Link
+                        <NavLink
                           to="/profile"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          className={({ isActive }) =>
+                            `block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 ${isActive ? 'active' : ''}`
+                          }
                           onClick={() => setIsDropdownOpen(false)}
                         >
                           Profile
-                        </Link>
+                        </NavLink>
                       </li>
                       <li>
                         <button
@@ -102,13 +106,13 @@ const Header = () => {
                 )}
               </div>
             ) : (
-              <Link
+              <NavLink
                 to="/auth"
                 className="flex items-center space-x-2 bg-[#0DB78E] text-black px-4 py-2 rounded-lg hover:bg-green-500 transition-colors duration-300"
               >
                 <LogIn className="w-5 h-5" />
                 <span>Login / Sign Up</span>
-              </Link>
+              </NavLink>
             )}
           </nav>
 
@@ -131,14 +135,16 @@ const Header = () => {
           <SearchBar />
           <div className="pt-2 pb-5 flex flex-col">
             {['', 'Music', 'My Playlist'].map((item) => (
-              <Link
+              <NavLink
                 key={item}
                 to={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                className="block px-3 py-2 rounded-md text-white hover:bg-purple-500 transform hover:translate-x-2 transition-all duration-300"
+                className={({ isActive }) =>
+                  `block px-3 py-2 rounded-md text-white hover:bg-purple-500 transform hover:translate-x-2 transition-all duration-300 ${isActive ? 'active' : ''}`
+                }
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item !== '' ? item : 'Home'}
-              </Link>
+              </NavLink>
             ))}
 
             {/* Mobile Dropdown for Logged-In Users */}
@@ -157,16 +163,18 @@ const Header = () => {
                   <div className="mt-2 bg-white rounded-md shadow-lg z-50">
                     <ul>
                       <li>
-                        <Link
+                        <NavLink
                           to="/profile"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          className={({ isActive }) =>
+                            `block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 ${isActive ? 'active' : ''}`
+                          }
                           onClick={() => {
                             setIsDropdownOpen(false);
                             setIsMenuOpen(false);
                           }}
                         >
                           Profile
-                        </Link>
+                        </NavLink>
                       </li>
                       <li>
                         <button
@@ -181,7 +189,7 @@ const Header = () => {
                 )}
               </div>
             ) : (
-              <Link
+              <NavLink
                 to="/auth"
                 className="flex justify-center items-center space-x-2 bg-[#0DB78E] text-black px-4 py-2 rounded-lg hover:bg-green-500 transition-colors duration-300"
                 onClick={() => setIsMenuOpen(false)}
@@ -190,7 +198,7 @@ const Header = () => {
                   <LogIn className="w-5 h-5" />
                   <span>Login / Sign Up</span>
                 </div>
-              </Link>
+              </NavLink>
             )}
           </div>
         </div>

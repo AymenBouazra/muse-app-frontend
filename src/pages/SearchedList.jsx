@@ -8,9 +8,11 @@ const SearchedList = () => {
  const { playTrack } = useMusicPlayer();
 
  return (
-  <PageContainer>
-   <Tracks videos={searchResults} playTrack={playTrack} />
-  </PageContainer>
+  <div className='flex flex-col w-screen'>
+   <PageContainer>
+    <Tracks videos={searchResults} playTrack={playTrack} />
+   </PageContainer>
+  </div>
  );
 };
 

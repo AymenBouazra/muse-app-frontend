@@ -13,3 +13,7 @@
 .text-purple-900{
   color: #4A2584;
 } 
+
+.active span {
+  width: 100%;
+}

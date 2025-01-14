@@ -21,7 +21,7 @@ const Tracks = ({ videos, playTrack }) => {
  }, [dispatch]);
 
  return (
-  <div className='flex flex-col w-screen'>
+  <div className='flex flex-col w-screen px-10'>
    {videos?.map((video) => {
     return (
      <Track

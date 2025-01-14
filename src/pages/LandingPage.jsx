@@ -1,7 +1,31 @@
-import { Download, PlayCircle, Heart, Award, Link } from 'lucide-react';
+import { Download, PlayCircle, Heart, Award } from 'lucide-react';
 import museLogo from '/assets/img/logo/muse-brand.svg';
+import { NavLink, Link, useLocation } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 
 const LandingPage = () => {
+ const featuresRef = useRef();
+ let location = useLocation();
+
+
+ useEffect(() => {
+  function scrolling(section) {
+   if (section.state !== null) {
+    const toGo = location.state.name;
+    switch (toGo) {
+     case "features":
+      window.scrollTo({
+       top: featuresRef.current.offsetTop - 20,
+       behavior: "smooth"
+      });
+      break;
+     default:
+      break;
+    }
+   }
+  }
+  scrolling(location.state);
+ }, [location.state]);
  return (
   <div className="min-h-screen bg-gradient-to-b from-[#4A2584] via-black to-black text-white pt-16">
    {/* Hero Section */}
@@ -17,12 +41,12 @@ const LandingPage = () => {
         Premium sound quality with zero ads.
        </p>
        <div className="flex space-x-4">
-        <button className="bg-[#0DB78E] hover:bg-green-500 text-black px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105">
+        <Link to='/music' className="bg-[#0DB78E] hover:bg-green-500 text-black px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105">
          Get Started
-        </button>
-        <button className="border border-white hover:border-green-400 px-8 py-3 rounded-full transition-all duration-300 hover:text-green-400">
+        </Link>
+        <NavLink to='/' state={{ name: 'features' }} className="border border-white hover:border-green-400 px-8 py-3 rounded-full transition-all duration-300 hover:text-green-400">
          Learn More
-        </button>
+        </NavLink>
        </div>
       </div>
       <div className="relative">
@@ -38,7 +62,7 @@ const LandingPage = () => {
    </section>
 
    {/* Features Section */}
-   <section id="features" className="py-20 px-6">
+   <section ref={featuresRef} id="features" className="py-20 px-6">
     <div className="max-w-7xl mx-auto">
      <h2 className="text-4xl font-bold text-center mb-16">
       Why Choose <span className="text-green-400">Muse</span>?

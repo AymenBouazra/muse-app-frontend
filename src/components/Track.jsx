@@ -41,9 +41,9 @@ const Track = ({
   const isCurrentTrackPlaying = currentTrack === video.id.videoId && isPlaying;
 
   return (
-    <div className={`flex items-center justify-between p-3 rounded-lg hover:bg-[#4A2584]/20 transition-colors group ${isCurrentTrackPlaying ? 'bg-gray-800' : ''}`}>
+    <div onClick={togglePlay} className={`flex items-center justify-between cursor-pointer p-3 rounded-lg hover:bg-[#4A2584] transition-colors group ${isCurrentTrackPlaying ? 'bg-gray-800' : ''}`}>
       {/* Thumbnail and Play Button */}
-      <div className="relative w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0" onClick={togglePlay}>
+      <div className="relative w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0" >
         <img
           src={video.snippet.thumbnails.high.url}
           alt={video.snippet.title}
